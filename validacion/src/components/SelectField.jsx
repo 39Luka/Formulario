@@ -1,4 +1,4 @@
-function SelectField({id, value, label, options, handleChange} ) {
+function SelectField({id, value, label, options, handleChange, error, required} ) {
     return (
         <>
             <div className="form__field">
@@ -8,15 +8,17 @@ function SelectField({id, value, label, options, handleChange} ) {
                     className="form__select"
                     value={value}
                     onChange={handleChange}
+                    required = {required}
                 >
 
-                    <option value="">--Selecciona--</option>
+                    <option value="" disabled>--Selecciona--</option>
                     
                     {options.map((opt) =>
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
                     )}
 
                 </select>
+             {error && <p className="form__error">{error}</p>}
             </div>
         </>
     )

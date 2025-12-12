@@ -1,4 +1,4 @@
-function CheckedField(id, label, value, handleChange){
+function CheckedField({id, label, value, handleChange, error, required = false}){
     return(
         <>
             <div className="form__checkbox">
@@ -8,8 +8,10 @@ function CheckedField(id, label, value, handleChange){
                     className="form__checkbox-input"
                     checked={value}
                     onChange={handleChange}
+                    required = {required}
                 />
                 <label htmlFor={id} className="form__checkbox-label">{label}</label>
+            {error && <p className="form__error">{error}</p>}
             </div>
         </>
     )

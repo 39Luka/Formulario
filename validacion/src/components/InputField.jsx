@@ -1,4 +1,4 @@
-function InputField({id, value, type = "text", label, handleChange }) {
+function InputField({id, value, type = "text", label, handleChange, error , required = false}) {
     return (
         <>
             <div className="form__field">
@@ -9,8 +9,9 @@ function InputField({id, value, type = "text", label, handleChange }) {
                     className="form__input"
                     value={value}
                     onChange={handleChange}
+                    required = {required}
                 />
-
+            {error && <p className="form__error">{error}</p>}
             </div>
         </>
     )
